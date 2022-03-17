@@ -32,12 +32,11 @@ def frequency_table(Text, k):
 
 
 def frequent_words(genome_string, k):
-    frequent_patterns = []
     freq_map = frequency_table(genome_string, k)
     max_frequency = freq_map[max(freq_map, key=freq_map.get)]
 
-    for pattern in freq_map.keys():
-        if freq_map[pattern] == max_frequency:
-            frequent_patterns.append(pattern)
+    frequent_patterns = [pattern
+                         for pattern in freq_map.keys()
+                         if freq_map[pattern] == max_frequency]
 
     return frequent_patterns, max_frequency
