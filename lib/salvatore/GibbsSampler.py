@@ -16,7 +16,7 @@ def biased_random_k_mer_selector(probabilities):
 
 # Input: a list of k mers and a profile matrix
 # Output: conditional prob. of k mers
-def get_conditional_probabilities(k_mers, profile):
+def get_conditional_probabilities(k_mers, profile) -> dict:
     probabilities = dict()
     for k_mer in k_mers:
         probability = 1
@@ -28,7 +28,7 @@ def get_conditional_probabilities(k_mers, profile):
 
 # Input: a string, a profile matrix, an integer k
 # Output: a biased random k mer from profile matrix
-def profile_random_generator_k_mer(deleted_string, profile, k):
+def profile_random_generator_k_mer(deleted_string, profile, k) -> str:
     k_mers = get_k_mers(deleted_string, k)
     probabilities = get_conditional_probabilities(k_mers, profile)
     selected_k_mer = biased_random_k_mer_selector(probabilities)
@@ -37,7 +37,7 @@ def profile_random_generator_k_mer(deleted_string, profile, k):
 
 # Input: a list of motifs, a string k mer, an integer i
 # Output: a list of motifs
-def new_motifs_from(motifs, k_mer, index):
+def new_motifs_from(motifs, k_mer, index) -> list:
     new_motifs = list()
     for i in range(len(motifs)):
         if i != index:
@@ -48,7 +48,7 @@ def new_motifs_from(motifs, k_mer, index):
 
 
 # Input: A collection of strings Dna, an integer k, an integer t and an integer n.
-# Output:
+# Output: the best motifs and the score
 def gibbs_sampler(dna, k, t, n):
     best_motifs = random_motifs_selector(dna, k)
     for j in range(n):
@@ -64,7 +64,7 @@ def gibbs_sampler(dna, k, t, n):
 
 # Input: list of dna-strings of the same length and an integer index
 # Output: profile matrix as a dictionary
-def get_profile_except_i_th_string(motifs, index):
+def get_profile_except_i_th_string(motifs, index) -> dict:
     n_strings = len(motifs)
     string_size = len(motifs[0])
     # initialize occurrence count to one (laplace rule)
@@ -91,7 +91,7 @@ def get_profile_except_i_th_string(motifs, index):
 
 # Input: a list of strings dna, an integer k
 # Output: a list of motifs
-def random_motifs_selector(dna, k):
+def random_motifs_selector(dna, k) -> list:
     motifs = list()
     for dna_string in dna:
         dna_string_length = len(dna_string)
