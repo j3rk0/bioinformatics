@@ -1,5 +1,6 @@
 import sys
 
+
 def get_hamming_distance(pattern, pattern2) -> int:
     distance = 0
     for i in range(len(pattern)):
@@ -13,7 +14,7 @@ def minimum_hamming_distance(pattern, text) -> int:
     k = len(pattern)
     min_distance = sys.maxsize
     for i in range(len(text) - k):
-        distance = get_hamming_distance(pattern, text[i:i+k])
+        distance = get_hamming_distance(pattern, text[i:i + k])
         if min_distance >= distance:
             min_distance = distance
 
@@ -54,7 +55,7 @@ def median_string(dna, k):
 
     return median
 
+
 if __name__ == '__main__':
     dataset = ["AAATTGACGCAT", "GACGACCACGTT", "CGTCAGCGCCTG", "GCTGAGCACCGG", "AGTACGGGACAG"]
     print(median_string(dataset, 3))
-
