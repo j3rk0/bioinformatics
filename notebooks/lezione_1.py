@@ -1,4 +1,4 @@
-from lib.motif import *
+from lib.frequent_words import *
 
 f = open("data/genoma_colera.txt", "r")
 colera = f.read()
